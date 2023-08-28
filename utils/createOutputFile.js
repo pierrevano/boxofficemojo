@@ -7,7 +7,7 @@ const createOutputFile = async (outputFilename) => {
     const data = await fetchMultiplePages();
 
     await fs.writeFile(outputFilename, JSON.stringify(data));
-    
+
     console.log("Box Office Mojo fetched successfully!");
   } catch (error) {
     console.error(error);

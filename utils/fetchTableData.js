@@ -26,8 +26,8 @@ async function fetchTableData(offset) {
 
           rowData.rank = offset + index;
           if (i === 1) rowData.title = cellText;
-          if (i === 2) rowData.lifetimeGross = parseInt(cellText.split("$")[1].replaceAll(",", ""));
-          if (i === 7) rowData.year = parseInt(cellText);
+          if (i === 2) rowData.lifetimeGross = cellText;
+          if (i === 7) rowData.year = cellText;
         });
 
       tableData.push(rowData);

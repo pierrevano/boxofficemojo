@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       datasets: [
         {
           label: "Lifetime gross",
-          data: data.map((row) => row.lifetimeGross),
+          data: data.map((row) => parseInt(row.lifetimeGross.split("$")[1].replaceAll(",", ""))),
           backgroundColor: ["rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)"],
           borderColor: ["rgb(75, 192, 192)", "rgb(54, 162, 235)"],
           borderWidth: 1,
