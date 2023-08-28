@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Amazon Ember";
+  font-weight: 500;
+  src:
+    url(https://m.media-amazon.com/images/S/sash/VjTR4RqBzY0mUYx.woff2) format("woff2"),
+    url(https://m.media-amazon.com/images/S/sash/XIvhNCZAsrT80Wz.woff) format("woff");
+}
+
+h1 {
+  font-family: "Amazon Ember", Arial, sans-serif;
+  text-align: center;
+}
