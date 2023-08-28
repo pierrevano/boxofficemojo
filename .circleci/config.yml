@@ -1,0 +1,24 @@
+version: 2.1
+
+# Definition of the build job
+jobs:
+  build:
+    docker:
+      - image: circleci/node:16.13
+    steps:
+      - checkout
+      - run:
+          name: Update npm to the latest version
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Update data
+          command: npm run build
+
+# Run the build job
+workflows:
+  build:
+    jobs:
+      - build
