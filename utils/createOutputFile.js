@@ -1,14 +1,20 @@
 const fs = require("fs/promises");
 
+const config = require("./config");
 const fetchMultiplePages = require("./fetchMultiplePages");
 
-const createOutputFile = async (outputFilename) => {
+const createOutputFile = async () => {
   try {
-    const data = await fetchMultiplePages();
+    for (let index = 0; index < config.sections.length; index++) {
+      const element = config.sections[index];
 
-    await fs.writeFile(outputFilename, JSON.stringify(data));
+      const data = await fetchMultiplePages(element);
 
-    console.log("Box Office Mojo fetched successfully!");
+      await fs.writeFile(`dist/${element}.json`, JSON.stringify(data));
+
+      console.log(`Box Office Mojo for page ${element} fetched successfully!`);
+      console.log();
+    }
   } catch (error) {
     console.error(error);
   }

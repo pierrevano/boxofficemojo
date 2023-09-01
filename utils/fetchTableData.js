@@ -3,9 +3,9 @@ const cheerio = require("cheerio");
 
 const config = require("./config");
 
-async function fetchTableData(offset) {
+async function fetchTableData(offset, element) {
   try {
-    const response = await axios.get(`${config.urlToFetch}?offset=${offset}`);
+    const response = await axios.get(`${config.baseURL}/${element}?offset=${offset}`);
     const html = response.data;
     const $ = cheerio.load(html);
 
@@ -24,10 +24,12 @@ async function fetchTableData(offset) {
         .each((i, cell) => {
           const cellText = $(cell).text().trim();
 
+          const indexYear = element.startsWith("ww_") ? 7 : 3;
+
           rowData.rank = offset + index;
           if (i === 1) rowData.title = cellText;
           if (i === 2) rowData.lifetimeGross = cellText;
-          if (i === 7) rowData.year = cellText;
+          if (i === indexYear) rowData.year = cellText;
         });
 
       tableData.push(rowData);

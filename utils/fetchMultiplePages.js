@@ -1,12 +1,12 @@
 const config = require("./config");
 const fetchTableData = require("./fetchTableData");
 
-const fetchMultiplePages = async () => {
+const fetchMultiplePages = async (element) => {
   let offset = 0;
   let allTableData = [];
 
   for (let i = 0; i < config.maxIterations; i++) {
-    const tableData = await fetchTableData(offset);
+    const tableData = await fetchTableData(offset, element);
 
     if (!tableData || tableData.length === 0) break;
 

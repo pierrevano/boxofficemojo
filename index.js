@@ -1,9 +1,7 @@
 const createOutputFile = require("./utils/createOutputFile");
 
 (async () => {
-  const args = process.argv.slice(2);
+  await createOutputFile();
 
-  console.log("Command line arguments:", args);
-
-  await createOutputFile(`dist/${args[0]}.json`);
+  console.log(`Box Office Mojo all pages fetched successfully!`);
 })();

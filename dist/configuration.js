@@ -1,22 +1,21 @@
-function getParameterByName(name, url = window.location.href) {
-  name = name.replace(/[[\]]/g, "\\$&");
-  const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
-  const results = regex.exec(url);
-
-  if (!results) return null;
-  if (!results[2]) return "";
-
-  return decodeURIComponent(results[2].replace(/\+/g, " "));
+function getPathFromUrl() {
+  const url = new URL(window.location.href);
+  return url.pathname;
 }
 
-function getType() {
-  const typeParam = getParameterByName("type");
-  return typeParam || "worldwide";
+function getPathValue() {
+  const value = getPathFromUrl();
+
+  if (value.includes("chart")) {
+    return `../../${value.split("/")[2]}`;
+  } else {
+    return "ww_top_lifetime_gross";
+  }
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
   async function fetchWorldwideData() {
-    const response = await fetch(`./${getType()}.json`);
+    const response = await fetch(`${getPathValue()}.json`);
     const data = await response.json();
     return data;
   }

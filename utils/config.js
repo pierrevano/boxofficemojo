@@ -1,6 +1,7 @@
 const config = {
-  baseURL: "https://www.boxofficemojo.com",
-  urlToFetch: "https://www.boxofficemojo.com/chart/ww_top_lifetime_gross",
+  baseURL: "https://www.boxofficemojo.com/chart",
+  sections: ["top_lifetime_gross", "ww_top_lifetime_gross"],
+
   tableRowsClasses: ".a-bordered.a-horizontal-stripes.a-size-base",
 
   maxIterations: 1,

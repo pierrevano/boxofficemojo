@@ -6,7 +6,7 @@
   "scripts": {
     "prettier": "prettier --write .",
     "update": "rm -rf node_modules package-lock.json && npm install",
-    "build": "node index.js worldwide && npm run prettier && surge dist"
+    "build": "node index.js && npm run prettier && surge dist"
   },
   "prettier": {
     "printWidth": 200
